@@ -1,5 +1,6 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import Editor from "@monaco-editor/react";
+import { toast } from "react-toastify";
 
 export default function Playground() {
   const inputRef = useRef(null);
@@ -25,12 +26,25 @@ export default function Playground() {
   };
 
   const handleFormat = () => {
-    const formatted = JSON.stringify(
-      JSON.parse(inputRef.current.value),
-      null,
-      4
-    );
-    setFormattedJson(formatted);
+    try{
+      const formatted = JSON.stringify(
+        JSON.parse(inputRef.current.value),
+        null,
+        4
+      );
+      setFormattedJson(formatted);
+    }catch{
+      toast.error('Invalid JSON', {
+        position: "top-right",
+        autoClose: 1000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        });
+    }
   };
 
   const handleReset = () => {
@@ -43,13 +57,13 @@ export default function Playground() {
         {/* Input */}
 
         <textarea
-          className={`${styles.textContainer} lg:w-4/12 text-sm`}
+          className={`${styles.textContainer} lg:w-2/6 xl:w-4/12 text-sm`}
           ref={inputRef}
           placeholder="Input json..."
         ></textarea>
 
         {/* Controls */}
-        <div className="flex flex-col justify-center mx-4 space-y-10">
+        <div className="flex flex-col justify-center m-4 space-y-10">
           <button
             onClick={handleFormat}
             className={`${styles.button} bg-green-500`}
@@ -63,7 +77,7 @@ export default function Playground() {
         {/* Output */}
         <Editor
           height="90vh"
-          className={`${styles.textContainer} lg:w-6/12`}
+          className={`${styles.textContainer} lg:w-3/6 xl:w-6/12`}
           defaultLanguage="json"
           defaultValue={""}
           value={formattedJson}
