@@ -7,8 +7,8 @@ export default function Playground() {
   const [formattedJson, setFormattedJson] = useState("");
   const styles = {
     textContainer:
-      "border-2 border-gray-300 rounded-md p-2 w-full h-[calc(100vh-100px)]",
-    button: "bg-indigo-500 p-2 rounded text-white text-xs"
+    "border-2 border-gray-300 rounded-md p-2 w-full h-96 lg:h-[calc(100vh-120px)]",
+    button: "bg-indigo-500 p-2 rounded text-white text-xs md:text-sm"
   };
 
   const editorOptions = {
