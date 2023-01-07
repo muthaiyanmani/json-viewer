@@ -7,9 +7,11 @@ function App() {
 
       {/* Header */}
       <header className="flex flex-col items-center justify-between mb-4 md:flex-row">
-        <h1 className="text-xl font-bold text-transparent lg:text-2xl bg-clip-text bg-gradient-to-r from-blue-500 to-pink-500 decoration-8">
+       <a href="https://muthaiyan.me">
+       <h1 className="text-xl font-bold text-transparent lg:text-2xl bg-clip-text bg-gradient-to-r from-blue-500 to-pink-500 decoration-8">
           &#123; JSON Beautifier &#125;
         </h1>
+       </a>
         <p className="text-xs md:text-sm">Pro Tip 💡 : You can directly paste your code here.</p>
       </header>
 
